@@ -1,0 +1,211 @@
+---
+title: An R Markdown document converted from "HW4_Draft_1.ipynb"
+output: html_document
+---
+
+```{r}
+#EXERCISE 1
+```
+
+```{r}
+rm(list = ls())#start fresh
+```
+
+```{r}
+options(repos = c(CRAN = "https://cran.rstudio.com/"))#needed this command to prevent the knitting function from failing
+```
+
+
+
+```{r}
+#install per directions from tutorial
+install.packages('rio')
+```
+
+```{r}
+#read the files from HW3 for exercise
+Infant_Mortality=read.csv("https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Infant_Mortality_Formatted2.csv")
+Life_Expectantcy=read.csv("https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Life_Expectantcy_Formatted2.csv")
+Maternal=read.csv("https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Maternal_Formatted2.csv")
+```
+
+```{r}
+#display column names to verify that files are being read successfully.  Also confirming data types as part of this chunk.
+names(Infant_Mortality)
+names(Life_Expectantcy)
+names(Maternal)
+
+str(Infant_Mortality)
+str(Life_Expectantcy)
+str(Maternal)
+```
+
+```{r}
+#merging all three data frames together. Need a primary key for this to succeeed, so using country. The merge needs to be completed in two steps, because you can only merge two at a time.
+merged_data <- merge(Infant_Mortality, Life_Expectantcy, by = "Country")
+final_merged_data <- merge(merged_data, Maternal, by = "Country")
+
+#showing a printout to see the result.
+final_merged_data
+```
+
+```{r}
+# Remove the 'Region.x' and 'Region.y' columns from final_merged_data
+final_merged_data <- subset(final_merged_data, select = -c(Region.x, Region.y))
+
+# Display the column names after removal to verify
+print("Column names of final_merged_data after removing Region.x and Region.y:")
+names(final_merged_data)
+```
+
+```{r}
+#this code chunk is to reorder the column names so that Region is next to Country.
+# Get the current column names
+current_cols <- names(final_merged_data)
+
+# Identify the target column to move ('Region')
+region_col <- "Region"
+
+# Identify the column 'Country' after which 'Region' should be placed
+country_col <- "Country"
+
+# Create a new order for the columns
+new_col_order <- c(country_col, region_col, setdiff(current_cols, c(country_col, region_col)))
+
+# Reorder the DataFrame columns
+final_merged_data <- final_merged_data[, new_col_order]
+
+# Display the new column names to verify the order
+print("Column names after reordering:")
+names(final_merged_data)
+```
+
+```{r}
+#provide a visual of the changed columns for additional verfication.
+final_merged_data
+```
+
+```{r}
+#saving as an RDS file
+saveRDS(final_merged_data,"Final_Merged_Data_HW4")
+```
+
+```{r}
+#reading to verify
+Final_Merged_Data_HW4RDS=readRDS("Final_Merged_Data_HW4")
+str(Final_Merged_Data_HW4RDS)
+```
+
+```{r}
+#saving as CSV file and reading to verify
+write.csv(final_merged_data,"Final_Merged_Data2.csv", row.names=FALSE)
+Final_Merged_Data2=read.csv("Final_Merged_Data2.csv")
+str(Final_Merged_Data2)
+```
+
+```{r}
+#EXERCISE 2
+```
+
+```{r}
+#read the data file for the next exercise
+read=final_merged_data
+```
+
+```{r}
+#provide data types to confirm file is still being read correctly.
+str(final_merged_data)
+```
+
+```{r}
+#show first 20 rows of data for further verfication.
+head(final_merged_data,20)
+```
+
+```{r}
+#downloading dplyr library needed for data aggregation
+library(dplyr)
+
+# Group the data by 'Region' and calculate the sum of numerical columns.  I chose sum, because I want to know the death data by region.
+aggregated_data_by_region <- final_merged_data %>%
+  group_by(Region) %>%
+  summarise(
+    Total_Infant_Deaths_Per_1K = sum(Infant_Deaths_Per_1K, na.rm = TRUE),
+    Total_Expected_Years_To_Live = sum(Expected_Years_To_Live, na.rm = TRUE),
+    Total_Deaths_Per_100K_Live_Births = sum(Deaths_Per_100K_Live_Births, na.rm = TRUE)
+  )
+
+# Display the aggregated data for verfication purposes.
+print("Aggregated data by Region (Totals):")
+print(aggregated_data_by_region)
+```
+
+```{r}
+#formatted veiw for additional verfication.
+aggregated_data_by_region
+```
+
+```{r}
+#save as RDS file
+saveRDS(aggregated_data_by_region,"aggregated_data_by_regionwHW4")
+```
+
+```{r}
+#read the file to verify
+aggregated_data_by_region=readRDS("aggregated_data_by_regionwHW4")
+str(aggregated_data_by_region)
+```
+
+```{r}
+#save as CSV and verify per homework instructions
+write.csv(aggregated_data_by_region,"aggregated_data_by_region2.csv", row.names=FALSE)
+aggregated_data_by_region=read.csv("aggregated_data_by_region2.csv")
+str(aggregated_data_by_region)
+```
+
+```{r}
+#EXERCISE 3
+```
+
+```{r}
+#reading the data frame from exercise 1.
+read=final_merged_data
+```
+
+```{r}
+#formatted view for verification that the data continues to display as expected.
+final_merged_data
+```
+
+```{r}
+#code chunk to conver the data from wide to long format.  Combining all non-region/country columns into a 'Death Type' column.  Values column is designated as "Deaths", which are the number of deaths per each death type.
+Merged_Data_Long=tidyr::pivot_longer(data=final_merged_data,
+                                cols=c(Infant_Deaths_Per_1K, Expected_Years_To_Live, Deaths_Per_100K_Live_Births),
+                                names_to = "Death Type",
+                                values_to = "Deaths")
+
+#remove the region column
+Merged_Data_Long <- subset(Merged_Data_Long, select = -c(Region))
+
+#formatted view for verifcation of the code
+Merged_Data_Long
+```
+
+```{r}
+#save as RDS file.
+saveRDS(Merged_Data_Long,"Merged_Data_LongRDS")
+```
+
+```{r}
+#read RDS file for verification
+Merged_Data_Long=readRDS("Merged_Data_LongRDS")
+str(Merged_Data_Long)
+```
+
+```{r}
+#save as CSV file and view for verification
+write.csv(Merged_Data_Long,"Merged_Data_Long2.csv", row.names=FALSE)
+Merged_Data_Long=read.csv("Merged_Data_Long2.csv")
+str(Merged_Data_Long)
+```
+
