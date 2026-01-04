@@ -41,21 +41,19 @@ str(Maternal)
 ```
 
 ```{r}
-#merging all three data frames together. Need a primary key for this to succeeed, so using country. The merge needs to be completed in two steps, because you can only merge two at a time.
+#merging all three data frames together. Need a primary key for this to succeed, so using country. The merge needs to be completed in two steps, because you can only merge two at a time.
 merged_data <- merge(Infant_Mortality, Life_Expectantcy, by = "Country")
 final_merged_data <- merge(merged_data, Maternal, by = "Country")
 
-#showing a printout to see the result.
-final_merged_data
+#showing column names to see results.
+names(final_merged_data)
 ```
 
 ```{r}
 # Remove the 'Region.x' and 'Region.y' columns from final_merged_data
 final_merged_data <- subset(final_merged_data, select = -c(Region.x, Region.y))
 
-# Display the column names after removal to verify
-print("Column names of final_merged_data after removing Region.x and Region.y:")
-names(final_merged_data)
+
 ```
 
 ```{r}
@@ -75,14 +73,8 @@ new_col_order <- c(country_col, region_col, setdiff(current_cols, c(country_col,
 # Reorder the DataFrame columns
 final_merged_data <- final_merged_data[, new_col_order]
 
-# Display the new column names to verify the order
-print("Column names after reordering:")
-names(final_merged_data)
-```
-
-```{r}
-#provide a visual of the changed columns for additional verfication.
-final_merged_data
+# Display head of data frame to verify changes
+head(final_merged_data,20)
 ```
 
 ```{r}
@@ -126,7 +118,7 @@ head(final_merged_data,20)
 #downloading dplyr library needed for data aggregation
 library(dplyr)
 
-# Group the data by 'Region' and calculate the sum of numerical columns.  I chose sum, because I want to know the death data by region.
+# Group the data by 'Region' and calculate the sum of numerical columns.  I chose sum, because I want to know the data by region.
 aggregated_data_by_region <- final_merged_data %>%
   group_by(Region) %>%
   summarise(
@@ -135,15 +127,13 @@ aggregated_data_by_region <- final_merged_data %>%
     Total_Deaths_Per_100K_Live_Births = sum(Deaths_Per_100K_Live_Births, na.rm = TRUE)
   )
 
-# Display the aggregated data for verfication purposes.
-print("Aggregated data by Region (Totals):")
-print(aggregated_data_by_region)
 ```
 
+
 ```{r}
-#formatted veiw for additional verfication.
-aggregated_data_by_region
+head(aggregated_data_by_region,20) #showing the head to verify - first 20 rows
 ```
+
 
 ```{r}
 #save as RDS file
@@ -174,22 +164,25 @@ read=final_merged_data
 
 ```{r}
 #formatted view for verification that the data continues to display as expected.
-final_merged_data
+head(final_merged_data,20)
 ```
 
 ```{r}
-#code chunk to conver the data from wide to long format.  Combining all non-region/country columns into a 'Death Type' column.  Values column is designated as "Deaths", which are the number of deaths per each death type.
+#code chunk to convert the data from wide to long format.  Combining all non-region/country columns into a 'Death Type' column.  Values column is designated as "Deaths", which are the number of deaths per each death type.
 Merged_Data_Long=tidyr::pivot_longer(data=final_merged_data,
                                 cols=c(Infant_Deaths_Per_1K, Expected_Years_To_Live, Deaths_Per_100K_Live_Births),
-                                names_to = "Death Type",
-                                values_to = "Deaths")
+                                names_to = "Infant_LifeExp_Maternal",
+                                values_to = "Data")
 
 #remove the region column
 Merged_Data_Long <- subset(Merged_Data_Long, select = -c(Region))
 
-#formatted view for verifcation of the code
-Merged_Data_Long
 ```
+```{r}
+head(Merged_Data_Long,20) #Show head for further verfication - first 20 rows
+```
+
+
 
 ```{r}
 #save as RDS file.

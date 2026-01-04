@@ -362,7 +362,7 @@ install.packages(&#39;rio&#39;)</code></pre>
 <pre><code>## package &#39;rio&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\jjburton\AppData\Local\Temp\RtmpeKmb4w\downloaded_packages</code></pre>
+##  C:\Users\jjburton\AppData\Local\Temp\RtmpG6Nh0i\downloaded_packages</code></pre>
 <pre class="r"><code>#read the files from HW3 for exercise
 Infant_Mortality=read.csv(&quot;https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Infant_Mortality_Formatted2.csv&quot;)
 Life_Expectantcy=read.csv(&quot;https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Life_Expectantcy_Formatted2.csv&quot;)
@@ -390,810 +390,18 @@ names(Infant_Mortality)</code></pre>
 ##  $ Country                    : chr  &quot;Nigeria&quot; &quot;Chad&quot; &quot;South Sudan&quot; &quot;Central African Republic&quot; ...
 ##  $ Deaths_Per_100K_Live_Births: int  993 748 692 692 628 563 521 518 505 494 ...
 ##  $ Region                     : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...</code></pre>
-<pre class="r"><code>#merging all three data frames together. Need a primary key for this to succeeed, so using country. The merge needs to be completed in two steps, because you can only merge two at a time.
+<pre class="r"><code>#merging all three data frames together. Need a primary key for this to succeed, so using country. The merge needs to be completed in two steps, because you can only merge two at a time.
 merged_data &lt;- merge(Infant_Mortality, Life_Expectantcy, by = &quot;Country&quot;)
 final_merged_data &lt;- merge(merged_data, Maternal, by = &quot;Country&quot;)
 
-#showing a printout to see the result.
-final_merged_data</code></pre>
-<pre><code>##                              Country Infant_Deaths_Per_1K
-## 1                        Afghanistan                101.3
-## 2                            Albania                 10.3
-## 3                            Algeria                 18.7
-## 4                            Andorra                  3.3
-## 5                             Angola                 55.6
-## 6                Antigua and Barbuda                 13.6
-## 7                          Argentina                  9.0
-## 8                            Armenia                 11.6
-## 9                          Australia                  2.9
-## 10                           Austria                  3.2
-## 11                        Azerbaijan                 10.9
-## 12                           Bahrain                  9.7
-## 13                        Bangladesh                 28.8
-## 14                          Barbados                  9.6
-## 15                           Belarus                  2.1
-## 16                           Belgium                  3.1
-## 17                            Belize                 11.3
-## 18                             Benin                 52.9
-## 19                            Bhutan                 24.3
-## 20                           Bolivia                 22.3
-## 21            Bosnia and Herzegovina                  5.0
-## 22                          Botswana                 23.7
-## 23                            Brazil                 12.9
-## 24                            Brunei                 10.0
-## 25                          Bulgaria                  7.7
-## 26                      Burkina Faso                 47.0
-## 27                             Burma                 32.1
-## 28                           Burundi                 35.7
-## 29                        Cabo Verde                 22.4
-## 30                          Cambodia                 27.9
-## 31                          Cameroon                 46.1
-## 32                            Canada                  4.3
-## 33          Central African Republic                 80.5
-## 34                              Chad                 62.5
-## 35                             Chile                  6.3
-## 36                             China                  6.2
-## 37                          Colombia                 11.7
-## 38                           Comoros                 54.9
-## 39                      Cook Islands                 15.1
-## 40                        Costa Rica                  6.7
-## 41                           Croatia                  8.4
-## 42                              Cuba                  4.0
-## 43                            Cyprus                  8.1
-## 44                           Czechia                  2.6
-## 45  Democratic Republic of the Congo                 57.4
-## 46                           Denmark                  3.0
-## 47                          Djibouti                 45.2
-## 48                          Dominica                 10.7
-## 49                Dominican Republic                 21.7
-## 50                           Ecuador                 11.2
-## 51                             Egypt                 16.8
-## 52                       El Salvador                 11.7
-## 53                 Equatorial Guinea                 77.4
-## 54                           Eritrea                 39.8
-## 55                           Estonia                  3.3
-## 56                          Eswatini                 36.7
-## 57                          Ethiopia                 32.6
-## 58    Federated States of Micronesia                 20.9
-## 59                              Fiji                  9.7
-## 60                           Finland                  2.1
-## 61                            France                  3.1
-## 62                             Gabon                 26.9
-## 63                            Gambia                 35.7
-## 64                        Gaza Strip                 15.1
-## 65                           Georgia                 21.7
-## 66                           Germany                  3.1
-## 67                             Ghana                 31.2
-## 68                            Greece                  3.4
-## 69                           Grenada                  9.0
-## 70                         Guatemala                 25.0
-## 71                            Guinea                 47.0
-## 72                     Guinea-Bissau                 46.4
-## 73                            Guyana                 21.1
-## 74                             Haiti                 36.8
-## 75                          Honduras                 15.4
-## 76                           Hungary                  4.7
-## 77                           Iceland                  1.6
-## 78                             India                 30.4
-## 79                         Indonesia                 18.9
-## 80                              Iran                 14.3
-## 81                              Iraq                 18.7
-## 82                           Ireland                  3.3
-## 83                            Israel                  2.8
-## 84                             Italy                  3.1
-## 85                       Ivory Coast                 52.5
-## 86                           Jamaica                 10.7
-## 87                             Japan                  1.9
-## 88                            Jordan                 13.2
-## 89                        Kazakhstan                  8.0
-## 90                             Kenya                 26.1
-## 91                          Kiribati                 31.5
-## 92                            Kuwait                  7.2
-## 93                        Kyrgyzstan                 24.5
-## 94                              Laos                 35.4
-## 95                            Latvia                  4.7
-## 96                           Lebanon                  6.7
-## 97                           Lesotho                 45.7
-## 98                           Liberia                 55.7
-## 99                             Libya                 10.7
-## 100                        Lithuania                  3.6
-## 101                       Luxembourg                  3.2
-## 102                       Madagascar                 37.5
-## 103                           Malawi                 31.9
-## 104                         Malaysia                  6.4
-## 105                         Maldives                 24.4
-## 106                             Mali                 57.4
-## 107                            Malta                  4.4
-## 108                 Marshall Islands                 20.6
-## 109                       Mauritania                 48.9
-## 110                        Mauritius                 11.6
-## 111                           Mexico                 12.1
-## 112                          Moldova                 13.8
-## 113                           Monaco                  1.7
-## 114                         Mongolia                 19.4
-## 115                       Montenegro                  3.2
-## 116                          Morocco                 18.3
-## 117                       Mozambique                 58.2
-## 118                          Namibia                 27.9
-## 119                            Nauru                  7.6
-## 120                            Nepal                 24.0
-## 121                      Netherlands                  3.6
-## 122                      New Zealand                  3.3
-## 123                        Nicaragua                 14.4
-## 124                            Niger                 64.3
-## 125                          Nigeria                 53.7
-## 126                      North Korea                 15.4
-## 127                  North Macedonia                  7.0
-## 128                           Norway                  1.8
-## 129                             Oman                 13.9
-## 130                         Pakistan                 51.5
-## 131                            Palau                 10.8
-## 132                           Panama                 14.2
-## 133                 Papua New Guinea                 32.0
-## 134                         Paraguay                 22.0
-## 135                             Peru                 10.8
-## 136                      Philippines                 22.0
-## 137                           Poland                  4.9
-## 138                         Portugal                  2.4
-## 139                      Puerto Rico                  5.8
-## 140                            Qatar                  6.4
-## 141            Republic of the Congo                 30.6
-## 142                          Romania                  5.5
-## 143                           Russia                  6.5
-## 144                           Rwanda                 24.9
-## 145            Saint Kitts and Nevis                  8.0
-## 146                      Saint Lucia                 11.5
-## 147 Saint Vincent and the Grenadines                 12.3
-## 148                            Samoa                 17.3
-## 149                       San Marino                  6.2
-## 150            Sao Tome and Principe                 42.6
-## 151                     Saudi Arabia                 11.7
-## 152                          Senegal                 31.1
-## 153                           Serbia                  4.5
-## 154                       Seychelles                 10.2
-## 155                     Sierra Leone                 71.2
-## 156                        Singapore                  1.5
-## 157                         Slovakia                  5.1
-## 158                         Slovenia                  1.5
-## 159                  Solomon Islands                 19.1
-## 160                          Somalia                 83.6
-## 161                     South Africa                 21.9
-## 162                      South Korea                  2.8
-## 163                      South Sudan                 60.1
-## 164                            Spain                  2.4
-## 165                        Sri Lanka                  6.8
-## 166                            Sudan                 40.6
-## 167                         Suriname                 29.6
-## 168                           Sweden                  2.3
-## 169                      Switzerland                  3.0
-## 170                            Syria                 15.1
-## 171                       Tajikistan                 21.7
-## 172                         Tanzania                 29.6
-## 173                         Thailand                  6.3
-## 174                      The Bahamas                  9.4
-## 175                      Timor-Leste                 32.2
-## 176                             Togo                 38.4
-## 177                            Tonga                 11.8
-## 178              Trinidad and Tobago                 15.1
-## 179                          Tunisia                 11.3
-## 180                           Turkey                 18.4
-## 181                     Turkmenistan                 35.9
-## 182                           Tuvalu                 27.8
-## 183                           Uganda                 28.5
-## 184                          Ukraine                  8.7
-## 185             United Arab Emirates                  5.0
-## 186                   United Kingdom                  3.8
-## 187                    United States                  5.1
-## 188                          Uruguay                  8.0
-## 189                       Uzbekistan                 18.2
-## 190                          Vanuatu                 13.7
-## 191                        Venezuela                 13.9
-## 192                          Vietnam                 14.1
-## 193                        West Bank                 15.1
-## 194                            Yemen                 44.6
-## 195                           Zambia                 35.6
-## 196                         Zimbabwe                 33.4
-##                              Region.x Expected_Years_To_Live
-## 1                          South Asia                   54.4
-## 2                              Europe                   79.9
-## 3                              Africa                   77.9
-## 4                              Europe                   83.8
-## 5                              Africa                   62.9
-## 6   Central America and the Caribbean                   78.3
-## 7                       South America                   78.8
-## 8                        Central Asia                   76.7
-## 9               Australia and Oceania                   83.5
-## 10                             Europe                   82.7
-## 11                       Central Asia                   75.9
-## 12                        Middle East                   80.4
-## 13                         South Asia                   75.2
-## 14  Central America and the Caribbean                   79.0
-## 15                             Europe                   74.7
-## 16                             Europe                   82.3
-## 17  Central America and the Caribbean                   74.3
-## 18                             Africa                   63.0
-## 19                         South Asia                   73.7
-## 20                      South America                   72.5
-## 21                             Europe                   78.5
-## 22                             Africa                   66.4
-## 23                      South America                   76.3
-## 24            East and Southeast Asia                   78.9
-## 25                             Europe                   76.1
-## 26                             Africa                   64.2
-## 27            East and Southeast Asia                   70.3
-## 28                             Africa                   68.1
-## 29                             Africa                   74.3
-## 30            East and Southeast Asia                   71.4
-## 31                             Africa                   64.2
-## 32                      North America                   84.2
-## 33                             Africa                   56.4
-## 34                             Africa                   60.0
-## 35                      South America                   80.3
-## 36            East and Southeast Asia                   78.7
-## 37                      South America                   74.9
-## 38                             Africa                   67.8
-## 39              Australia and Oceania                   77.6
-## 40  Central America and the Caribbean                   80.3
-## 41                             Europe                   77.7
-## 42  Central America and the Caribbean                   80.1
-## 43                             Europe                   80.2
-## 44                             Europe                   78.6
-## 45                             Africa                   62.6
-## 46                             Europe                   82.1
-## 47                             Africa                   65.9
-## 48  Central America and the Caribbean                   78.7
-## 49  Central America and the Caribbean                   72.6
-## 50                      South America                   74.9
-## 51                             Africa                   75.0
-## 52  Central America and the Caribbean                   75.9
-## 53                             Africa                   63.9
-## 54                             Africa                   67.5
-## 55                             Europe                   78.4
-## 56                             Africa                   60.7
-## 57                             Africa                   67.7
-## 58              Australia and Oceania                   75.0
-## 59              Australia and Oceania                   74.8
-## 60                             Europe                   82.2
-## 61                             Europe                   82.6
-## 62                             Africa                   70.4
-## 63                             Africa                   68.4
-## 64                        Middle East                   75.5
-## 65                       Central Asia                   72.8
-## 66                             Europe                   81.9
-## 67                             Africa                   70.1
-## 68                             Europe                   81.9
-## 69  Central America and the Caribbean                   76.3
-## 70  Central America and the Caribbean                   73.5
-## 71                             Africa                   64.6
-## 72                             Africa                   64.5
-## 73                      South America                   72.4
-## 74  Central America and the Caribbean                   65.6
-## 75  Central America and the Caribbean                   73.1
-## 76                             Europe                   76.0
-## 77                             Europe                   84.0
-## 78                         South Asia                   68.2
-## 79            East and Southeast Asia                   73.6
-## 80                        Middle East                   75.6
-## 81                        Middle East                   73.7
-## 82                             Europe                   82.0
-## 83                        Middle East                   83.1
-## 84                             Europe                   83.0
-## 85                             Africa                   63.2
-## 86  Central America and the Caribbean                   76.3
-## 87            East and Southeast Asia                   85.2
-## 88                        Middle East                   76.5
-## 89                       Central Asia                   73.3
-## 90                             Africa                   70.4
-## 91              Australia and Oceania                   68.5
-## 92                        Middle East                   79.6
-## 93                       Central Asia                   72.9
-## 94            East and Southeast Asia                   69.0
-## 95                             Europe                   76.4
-## 96                        Middle East                   79.2
-## 97                             Africa                   60.2
-## 98                             Africa                   61.6
-## 99                             Africa                   77.7
-## 100                            Europe                   76.1
-## 101                            Europe                   83.4
-## 102                            Africa                   68.8
-## 103                            Africa                   73.0
-## 104           East and Southeast Asia                   76.6
-## 105                        South Asia                   77.4
-## 106                            Africa                   63.2
-## 107                            Europe                   83.6
-## 108             Australia and Oceania                   75.2
-## 109                            Africa                   65.9
-## 110                            Africa                   75.4
-## 111                     North America                   74.6
-## 112                            Europe                   70.1
-## 113                            Europe                   89.8
-## 114           East and Southeast Asia                   71.9
-## 115                            Europe                   78.2
-## 116                            Africa                   74.2
-## 117                            Africa                   58.3
-## 118                            Africa                   65.9
-## 119             Australia and Oceania                   68.6
-## 120                        South Asia                   73.0
-## 121                            Europe                   81.9
-## 122             Australia and Oceania                   82.9
-## 123 Central America and the Caribbean                   74.7
-## 124                            Africa                   60.9
-## 125                            Africa                   62.2
-## 126           East and Southeast Asia                   73.5
-## 127                            Europe                   77.3
-## 128                            Europe                   82.9
-## 129                       Middle East                   77.4
-## 130                        South Asia                   70.3
-## 131             Australia and Oceania                   75.2
-## 132 Central America and the Caribbean                   79.2
-## 133           East and Southeast Asia                   70.1
-## 134                     South America                   78.8
-## 135                     South America                   68.9
-## 136           East and Southeast Asia                   70.8
-## 137                            Europe                   76.7
-## 138                            Europe                   81.9
-## 139 Central America and the Caribbean                   82.1
-## 140                       Middle East                   80.3
-## 141                            Africa                   72.9
-## 142                            Europe                   76.9
-## 143                      Central Asia                   72.3
-## 144                            Africa                   66.6
-## 145 Central America and the Caribbean                   77.6
-## 146 Central America and the Caribbean                   79.4
-## 147 Central America and the Caribbean                   77.2
-## 148             Australia and Oceania                   75.7
-## 149                            Europe                   84.2
-## 150                            Africa                   67.7
-## 151                       Middle East                   77.2
-## 152                            Africa                   70.6
-## 153                            Europe                   75.3
-## 154                            Africa                   76.6
-## 155                            Africa                   59.4
-## 156           East and Southeast Asia                   86.7
-## 157                            Europe                   77.2
-## 158                            Europe                   82.2
-## 159             Australia and Oceania                   77.2
-## 160                            Africa                   56.5
-## 161                            Africa                   71.9
-## 162           East and Southeast Asia                   83.4
-## 163                            Africa                   60.3
-## 164                            Europe                   83.0
-## 165                        South Asia                   76.8
-## 166                            Africa                   67.8
-## 167                     South America                   72.7
-## 168                            Europe                   82.9
-## 169                            Europe                   83.9
-## 170                       Middle East                   74.8
-## 171                      Central Asia                   71.9
-## 172                            Africa                   70.8
-## 173           East and Southeast Asia                   78.2
-## 174 Central America and the Caribbean                   76.7
-## 175           East and Southeast Asia                   70.5
-## 176                            Africa                   72.1
-## 177             Australia and Oceania                   78.0
-## 178 Central America and the Caribbean                   76.5
-## 179                            Africa                   77.3
-## 180                       Middle East                   76.7
-## 181                      Central Asia                   72.4
-## 182             Australia and Oceania                   69.0
-## 183                            Africa                   69.7
-## 184                            Europe                   70.5
-## 185                       Middle East                   79.9
-## 186                            Europe                   82.2
-## 187                     North America                   80.9
-## 188                     South America                   78.9
-## 189                      Central Asia                   76.2
-## 190             Australia and Oceania                   75.7
-## 191                     South America                   74.5
-## 192           East and Southeast Asia                   76.1
-## 193                       Middle East                   76.5
-## 194                       Middle East                   68.2
-## 195                            Africa                   66.9
-## 196                            Africa                   67.2
-##                              Region.y Deaths_Per_100K_Live_Births
-## 1                          South Asia                         521
-## 2                              Europe                           7
-## 3                              Africa                          62
-## 4                              Europe                          11
-## 5                              Africa                         183
-## 6   Central America and the Caribbean                          35
-## 7                       South America                          33
-## 8                        Central Asia                          19
-## 9               Australia and Oceania                           2
-## 10                             Europe                           6
-## 11                       Central Asia                          18
-## 12                        Middle East                          17
-## 13                         South Asia                         115
-## 14  Central America and the Caribbean                          35
-## 15                             Europe                           1
-## 16                             Europe                           4
-## 17  Central America and the Caribbean                          67
-## 18                             Africa                         518
-## 19                         South Asia                          47
-## 20                      South America                         146
-## 21                             Europe                           6
-## 22                             Africa                         155
-## 23                      South America                          67
-## 24            East and Southeast Asia                          36
-## 25                             Europe                           6
-## 26                             Africa                         242
-## 27            East and Southeast Asia                         185
-## 28                             Africa                         392
-## 29                             Africa                          40
-## 30            East and Southeast Asia                         137
-## 31                             Africa                         258
-## 32                      North America                          12
-## 33                             Africa                         692
-## 34                             Africa                         748
-## 35                      South America                          10
-## 36            East and Southeast Asia                          16
-## 37                      South America                          59
-## 38                             Africa                         179
-## 39              Australia and Oceania                           0
-## 40  Central America and the Caribbean                          24
-## 41                             Europe                           3
-## 42  Central America and the Caribbean                          35
-## 43                             Europe                          14
-## 44                             Europe                           3
-## 45                             Africa                         427
-## 46                             Europe                           4
-## 47                             Africa                         162
-## 48  Central America and the Caribbean                          36
-## 49  Central America and the Caribbean                         124
-## 50                      South America                          55
-## 51                             Africa                          17
-## 52  Central America and the Caribbean                          39
-## 53                             Africa                         174
-## 54                             Africa                         291
-## 55                             Europe                           5
-## 56                             Africa                         118
-## 57                             Africa                         195
-## 58              Australia and Oceania                         129
-## 59              Australia and Oceania                          30
-## 60                             Europe                           8
-## 61                             Europe                           7
-## 62                             Africa                         233
-## 63                             Africa                         354
-## 64                        Middle East                          16
-## 65                       Central Asia                          20
-## 66                             Europe                           4
-## 67                             Africa                         234
-## 68                             Europe                           5
-## 69  Central America and the Caribbean                          48
-## 70  Central America and the Caribbean                          94
-## 71                             Africa                         494
-## 72                             Africa                         505
-## 73                      South America                          75
-## 74  Central America and the Caribbean                         328
-## 75  Central America and the Caribbean                          47
-## 76                             Europe                          12
-## 77                             Europe                           3
-## 78                         South Asia                          80
-## 79            East and Southeast Asia                         140
-## 80                        Middle East                          16
-## 81                        Middle East                          66
-## 82                             Europe                           4
-## 83                        Middle East                           2
-## 84                             Europe                           6
-## 85                             Africa                         359
-## 86  Central America and the Caribbean                         130
-## 87            East and Southeast Asia                           3
-## 88                        Middle East                          31
-## 89                       Central Asia                          10
-## 90                             Africa                         379
-## 91              Australia and Oceania                          80
-## 92                        Middle East                           8
-## 93                       Central Asia                          42
-## 94            East and Southeast Asia                         112
-## 95                             Europe                          19
-## 96                        Middle East                          15
-## 97                             Africa                         478
-## 98                             Africa                         628
-## 99                             Africa                          59
-## 100                            Europe                           8
-## 101                            Europe                          12
-## 102                            Africa                         445
-## 103                            Africa                         225
-## 104           East and Southeast Asia                          26
-## 105                        South Asia                          32
-## 106                            Africa                         367
-## 107                            Europe                           8
-## 108             Australia and Oceania                         155
-## 109                            Africa                         381
-## 110                            Africa                          66
-## 111                     North America                          42
-## 112                            Europe                          19
-## 113                            Europe                           5
-## 114           East and Southeast Asia                          41
-## 115                            Europe                           6
-## 116                            Africa                          70
-## 117                            Africa                          82
-## 118                            Africa                         139
-## 119             Australia and Oceania                         273
-## 120                        South Asia                         142
-## 121                            Europe                           4
-## 122             Australia and Oceania                           7
-## 123 Central America and the Caribbean                          60
-## 124                            Africa                         350
-## 125                            Africa                         993
-## 126           East and Southeast Asia                          67
-## 127                            Europe                           3
-## 128                            Europe                           1
-## 129                       Middle East                          13
-## 130                        South Asia                         155
-## 131             Australia and Oceania                          89
-## 132 Central America and the Caribbean                          37
-## 133           East and Southeast Asia                         189
-## 134                     South America                          58
-## 135                     South America                          51
-## 136           East and Southeast Asia                          84
-## 137                            Europe                           2
-## 138                            Europe                          15
-## 139 Central America and the Caribbean                          11
-## 140                       Middle East                           4
-## 141                            Africa                         241
-## 142                            Europe                          12
-## 143                      Central Asia                           9
-## 144                            Africa                         229
-## 145 Central America and the Caribbean                          74
-## 146 Central America and the Caribbean                          44
-## 147 Central America and the Caribbean                          56
-## 148             Australia and Oceania                         101
-## 149                            Europe                           8
-## 150                            Africa                          75
-## 151                       Middle East                           7
-## 152                            Africa                         237
-## 153                            Europe                          11
-## 154                            Africa                          42
-## 155                            Africa                         354
-## 156           East and Southeast Asia                           6
-## 157                            Europe                           4
-## 158                            Europe                           3
-## 159             Australia and Oceania                         123
-## 160                            Africa                         563
-## 161                            Africa                         118
-## 162           East and Southeast Asia                           4
-## 163                            Africa                         692
-## 164                            Europe                           3
-## 165                        South Asia                          18
-## 166                            Africa                         256
-## 167                     South America                          84
-## 168                            Europe                           4
-## 169                            Europe                           5
-## 170                       Middle East                          20
-## 171                      Central Asia                          14
-## 172                            Africa                         276
-## 173           East and Southeast Asia                          34
-## 174 Central America and the Caribbean                          76
-## 175           East and Southeast Asia                         192
-## 176                            Africa                         349
-## 177             Australia and Oceania                          67
-## 178 Central America and the Caribbean                          54
-## 179                            Africa                          36
-## 180                       Middle East                          15
-## 181                      Central Asia                           5
-## 182             Australia and Oceania                         170
-## 183                            Africa                         170
-## 184                            Europe                          15
-## 185                       Middle East                           3
-## 186                            Europe                           8
-## 187                     North America                          17
-## 188                     South America                          15
-## 189                      Central Asia                          26
-## 190             Australia and Oceania                         100
-## 191                     South America                         227
-## 192           East and Southeast Asia                          48
-## 193                       Middle East                          16
-## 194                       Middle East                         118
-## 195                            Africa                          85
-## 196                            Africa                         358
-##                                Region
-## 1                          South Asia
-## 2                              Europe
-## 3                              Africa
-## 4                              Europe
-## 5                              Africa
-## 6   Central America and the Caribbean
-## 7                       South America
-## 8                        Central Asia
-## 9               Australia and Oceania
-## 10                             Europe
-## 11                       Central Asia
-## 12                        Middle East
-## 13                         South Asia
-## 14  Central America and the Caribbean
-## 15                             Europe
-## 16                             Europe
-## 17  Central America and the Caribbean
-## 18                             Africa
-## 19                         South Asia
-## 20                      South America
-## 21                             Europe
-## 22                             Africa
-## 23                      South America
-## 24            East and Southeast Asia
-## 25                             Europe
-## 26                             Africa
-## 27            East and Southeast Asia
-## 28                             Africa
-## 29                             Africa
-## 30            East and Southeast Asia
-## 31                             Africa
-## 32                      North America
-## 33                             Africa
-## 34                             Africa
-## 35                      South America
-## 36            East and Southeast Asia
-## 37                      South America
-## 38                             Africa
-## 39              Australia and Oceania
-## 40  Central America and the Caribbean
-## 41                             Europe
-## 42  Central America and the Caribbean
-## 43                             Europe
-## 44                             Europe
-## 45                             Africa
-## 46                             Europe
-## 47                             Africa
-## 48  Central America and the Caribbean
-## 49  Central America and the Caribbean
-## 50                      South America
-## 51                             Africa
-## 52  Central America and the Caribbean
-## 53                             Africa
-## 54                             Africa
-## 55                             Europe
-## 56                             Africa
-## 57                             Africa
-## 58              Australia and Oceania
-## 59              Australia and Oceania
-## 60                             Europe
-## 61                             Europe
-## 62                             Africa
-## 63                             Africa
-## 64                        Middle East
-## 65                       Central Asia
-## 66                             Europe
-## 67                             Africa
-## 68                             Europe
-## 69  Central America and the Caribbean
-## 70  Central America and the Caribbean
-## 71                             Africa
-## 72                             Africa
-## 73                      South America
-## 74  Central America and the Caribbean
-## 75  Central America and the Caribbean
-## 76                             Europe
-## 77                             Europe
-## 78                         South Asia
-## 79            East and Southeast Asia
-## 80                        Middle East
-## 81                        Middle East
-## 82                             Europe
-## 83                        Middle East
-## 84                             Europe
-## 85                             Africa
-## 86  Central America and the Caribbean
-## 87            East and Southeast Asia
-## 88                        Middle East
-## 89                       Central Asia
-## 90                             Africa
-## 91              Australia and Oceania
-## 92                        Middle East
-## 93                       Central Asia
-## 94            East and Southeast Asia
-## 95                             Europe
-## 96                        Middle East
-## 97                             Africa
-## 98                             Africa
-## 99                             Africa
-## 100                            Europe
-## 101                            Europe
-## 102                            Africa
-## 103                            Africa
-## 104           East and Southeast Asia
-## 105                        South Asia
-## 106                            Africa
-## 107                            Europe
-## 108             Australia and Oceania
-## 109                            Africa
-## 110                            Africa
-## 111                     North America
-## 112                            Europe
-## 113                            Europe
-## 114           East and Southeast Asia
-## 115                            Europe
-## 116                            Africa
-## 117                            Africa
-## 118                            Africa
-## 119             Australia and Oceania
-## 120                        South Asia
-## 121                            Europe
-## 122             Australia and Oceania
-## 123 Central America and the Caribbean
-## 124                            Africa
-## 125                            Africa
-## 126           East and Southeast Asia
-## 127                            Europe
-## 128                            Europe
-## 129                       Middle East
-## 130                        South Asia
-## 131             Australia and Oceania
-## 132 Central America and the Caribbean
-## 133           East and Southeast Asia
-## 134                     South America
-## 135                     South America
-## 136           East and Southeast Asia
-## 137                            Europe
-## 138                            Europe
-## 139 Central America and the Caribbean
-## 140                       Middle East
-## 141                            Africa
-## 142                            Europe
-## 143                      Central Asia
-## 144                            Africa
-## 145 Central America and the Caribbean
-## 146 Central America and the Caribbean
-## 147 Central America and the Caribbean
-## 148             Australia and Oceania
-## 149                            Europe
-## 150                            Africa
-## 151                       Middle East
-## 152                            Africa
-## 153                            Europe
-## 154                            Africa
-## 155                            Africa
-## 156           East and Southeast Asia
-## 157                            Europe
-## 158                            Europe
-## 159             Australia and Oceania
-## 160                            Africa
-## 161                            Africa
-## 162           East and Southeast Asia
-## 163                            Africa
-## 164                            Europe
-## 165                        South Asia
-## 166                            Africa
-## 167                     South America
-## 168                            Europe
-## 169                            Europe
-## 170                       Middle East
-## 171                      Central Asia
-## 172                            Africa
-## 173           East and Southeast Asia
-## 174 Central America and the Caribbean
-## 175           East and Southeast Asia
-## 176                            Africa
-## 177             Australia and Oceania
-## 178 Central America and the Caribbean
-## 179                            Africa
-## 180                       Middle East
-## 181                      Central Asia
-## 182             Australia and Oceania
-## 183                            Africa
-## 184                            Europe
-## 185                       Middle East
-## 186                            Europe
-## 187                     North America
-## 188                     South America
-## 189                      Central Asia
-## 190             Australia and Oceania
-## 191                     South America
-## 192           East and Southeast Asia
-## 193                       Middle East
-## 194                       Middle East
-## 195                            Africa
-## 196                            Africa</code></pre>
-<pre class="r"><code># Remove the &#39;Region.x&#39; and &#39;Region.y&#39; columns from final_merged_data
-final_merged_data &lt;- subset(final_merged_data, select = -c(Region.x, Region.y))
-
-# Display the column names after removal to verify
-print(&quot;Column names of final_merged_data after removing Region.x and Region.y:&quot;)</code></pre>
-<pre><code>## [1] &quot;Column names of final_merged_data after removing Region.x and Region.y:&quot;</code></pre>
-<pre class="r"><code>names(final_merged_data)</code></pre>
+#showing column names to see results.
+names(final_merged_data)</code></pre>
 <pre><code>## [1] &quot;Country&quot;                     &quot;Infant_Deaths_Per_1K&quot;       
-## [3] &quot;Expected_Years_To_Live&quot;      &quot;Deaths_Per_100K_Live_Births&quot;
-## [5] &quot;Region&quot;</code></pre>
+## [3] &quot;Region.x&quot;                    &quot;Expected_Years_To_Live&quot;     
+## [5] &quot;Region.y&quot;                    &quot;Deaths_Per_100K_Live_Births&quot;
+## [7] &quot;Region&quot;</code></pre>
+<pre class="r"><code># Remove the &#39;Region.x&#39; and &#39;Region.y&#39; columns from final_merged_data
+final_merged_data &lt;- subset(final_merged_data, select = -c(Region.x, Region.y))</code></pre>
 <pre class="r"><code>#this code chunk is to reorder the column names so that Region is next to Country.
 # Get the current column names
 current_cols &lt;- names(final_merged_data)
@@ -1210,409 +418,50 @@ new_col_order &lt;- c(country_col, region_col, setdiff(current_cols, c(country_c
 # Reorder the DataFrame columns
 final_merged_data &lt;- final_merged_data[, new_col_order]
 
-# Display the new column names to verify the order
-print(&quot;Column names after reordering:&quot;)</code></pre>
-<pre><code>## [1] &quot;Column names after reordering:&quot;</code></pre>
-<pre class="r"><code>names(final_merged_data)</code></pre>
-<pre><code>## [1] &quot;Country&quot;                     &quot;Region&quot;                     
-## [3] &quot;Infant_Deaths_Per_1K&quot;        &quot;Expected_Years_To_Live&quot;     
-## [5] &quot;Deaths_Per_100K_Live_Births&quot;</code></pre>
-<pre class="r"><code>#provide a visual of the changed columns for additional verfication.
-final_merged_data</code></pre>
-<pre><code>##                              Country                            Region
-## 1                        Afghanistan                        South Asia
-## 2                            Albania                            Europe
-## 3                            Algeria                            Africa
-## 4                            Andorra                            Europe
-## 5                             Angola                            Africa
-## 6                Antigua and Barbuda Central America and the Caribbean
-## 7                          Argentina                     South America
-## 8                            Armenia                      Central Asia
-## 9                          Australia             Australia and Oceania
-## 10                           Austria                            Europe
-## 11                        Azerbaijan                      Central Asia
-## 12                           Bahrain                       Middle East
-## 13                        Bangladesh                        South Asia
-## 14                          Barbados Central America and the Caribbean
-## 15                           Belarus                            Europe
-## 16                           Belgium                            Europe
-## 17                            Belize Central America and the Caribbean
-## 18                             Benin                            Africa
-## 19                            Bhutan                        South Asia
-## 20                           Bolivia                     South America
-## 21            Bosnia and Herzegovina                            Europe
-## 22                          Botswana                            Africa
-## 23                            Brazil                     South America
-## 24                            Brunei           East and Southeast Asia
-## 25                          Bulgaria                            Europe
-## 26                      Burkina Faso                            Africa
-## 27                             Burma           East and Southeast Asia
-## 28                           Burundi                            Africa
-## 29                        Cabo Verde                            Africa
-## 30                          Cambodia           East and Southeast Asia
-## 31                          Cameroon                            Africa
-## 32                            Canada                     North America
-## 33          Central African Republic                            Africa
-## 34                              Chad                            Africa
-## 35                             Chile                     South America
-## 36                             China           East and Southeast Asia
-## 37                          Colombia                     South America
-## 38                           Comoros                            Africa
-## 39                      Cook Islands             Australia and Oceania
-## 40                        Costa Rica Central America and the Caribbean
-## 41                           Croatia                            Europe
-## 42                              Cuba Central America and the Caribbean
-## 43                            Cyprus                            Europe
-## 44                           Czechia                            Europe
-## 45  Democratic Republic of the Congo                            Africa
-## 46                           Denmark                            Europe
-## 47                          Djibouti                            Africa
-## 48                          Dominica Central America and the Caribbean
-## 49                Dominican Republic Central America and the Caribbean
-## 50                           Ecuador                     South America
-## 51                             Egypt                            Africa
-## 52                       El Salvador Central America and the Caribbean
-## 53                 Equatorial Guinea                            Africa
-## 54                           Eritrea                            Africa
-## 55                           Estonia                            Europe
-## 56                          Eswatini                            Africa
-## 57                          Ethiopia                            Africa
-## 58    Federated States of Micronesia             Australia and Oceania
-## 59                              Fiji             Australia and Oceania
-## 60                           Finland                            Europe
-## 61                            France                            Europe
-## 62                             Gabon                            Africa
-## 63                            Gambia                            Africa
-## 64                        Gaza Strip                       Middle East
-## 65                           Georgia                      Central Asia
-## 66                           Germany                            Europe
-## 67                             Ghana                            Africa
-## 68                            Greece                            Europe
-## 69                           Grenada Central America and the Caribbean
-## 70                         Guatemala Central America and the Caribbean
-## 71                            Guinea                            Africa
-## 72                     Guinea-Bissau                            Africa
-## 73                            Guyana                     South America
-## 74                             Haiti Central America and the Caribbean
-## 75                          Honduras Central America and the Caribbean
-## 76                           Hungary                            Europe
-## 77                           Iceland                            Europe
-## 78                             India                        South Asia
-## 79                         Indonesia           East and Southeast Asia
-## 80                              Iran                       Middle East
-## 81                              Iraq                       Middle East
-## 82                           Ireland                            Europe
-## 83                            Israel                       Middle East
-## 84                             Italy                            Europe
-## 85                       Ivory Coast                            Africa
-## 86                           Jamaica Central America and the Caribbean
-## 87                             Japan           East and Southeast Asia
-## 88                            Jordan                       Middle East
-## 89                        Kazakhstan                      Central Asia
-## 90                             Kenya                            Africa
-## 91                          Kiribati             Australia and Oceania
-## 92                            Kuwait                       Middle East
-## 93                        Kyrgyzstan                      Central Asia
-## 94                              Laos           East and Southeast Asia
-## 95                            Latvia                            Europe
-## 96                           Lebanon                       Middle East
-## 97                           Lesotho                            Africa
-## 98                           Liberia                            Africa
-## 99                             Libya                            Africa
-## 100                        Lithuania                            Europe
-## 101                       Luxembourg                            Europe
-## 102                       Madagascar                            Africa
-## 103                           Malawi                            Africa
-## 104                         Malaysia           East and Southeast Asia
-## 105                         Maldives                        South Asia
-## 106                             Mali                            Africa
-## 107                            Malta                            Europe
-## 108                 Marshall Islands             Australia and Oceania
-## 109                       Mauritania                            Africa
-## 110                        Mauritius                            Africa
-## 111                           Mexico                     North America
-## 112                          Moldova                            Europe
-## 113                           Monaco                            Europe
-## 114                         Mongolia           East and Southeast Asia
-## 115                       Montenegro                            Europe
-## 116                          Morocco                            Africa
-## 117                       Mozambique                            Africa
-## 118                          Namibia                            Africa
-## 119                            Nauru             Australia and Oceania
-## 120                            Nepal                        South Asia
-## 121                      Netherlands                            Europe
-## 122                      New Zealand             Australia and Oceania
-## 123                        Nicaragua Central America and the Caribbean
-## 124                            Niger                            Africa
-## 125                          Nigeria                            Africa
-## 126                      North Korea           East and Southeast Asia
-## 127                  North Macedonia                            Europe
-## 128                           Norway                            Europe
-## 129                             Oman                       Middle East
-## 130                         Pakistan                        South Asia
-## 131                            Palau             Australia and Oceania
-## 132                           Panama Central America and the Caribbean
-## 133                 Papua New Guinea           East and Southeast Asia
-## 134                         Paraguay                     South America
-## 135                             Peru                     South America
-## 136                      Philippines           East and Southeast Asia
-## 137                           Poland                            Europe
-## 138                         Portugal                            Europe
-## 139                      Puerto Rico Central America and the Caribbean
-## 140                            Qatar                       Middle East
-## 141            Republic of the Congo                            Africa
-## 142                          Romania                            Europe
-## 143                           Russia                      Central Asia
-## 144                           Rwanda                            Africa
-## 145            Saint Kitts and Nevis Central America and the Caribbean
-## 146                      Saint Lucia Central America and the Caribbean
-## 147 Saint Vincent and the Grenadines Central America and the Caribbean
-## 148                            Samoa             Australia and Oceania
-## 149                       San Marino                            Europe
-## 150            Sao Tome and Principe                            Africa
-## 151                     Saudi Arabia                       Middle East
-## 152                          Senegal                            Africa
-## 153                           Serbia                            Europe
-## 154                       Seychelles                            Africa
-## 155                     Sierra Leone                            Africa
-## 156                        Singapore           East and Southeast Asia
-## 157                         Slovakia                            Europe
-## 158                         Slovenia                            Europe
-## 159                  Solomon Islands             Australia and Oceania
-## 160                          Somalia                            Africa
-## 161                     South Africa                            Africa
-## 162                      South Korea           East and Southeast Asia
-## 163                      South Sudan                            Africa
-## 164                            Spain                            Europe
-## 165                        Sri Lanka                        South Asia
-## 166                            Sudan                            Africa
-## 167                         Suriname                     South America
-## 168                           Sweden                            Europe
-## 169                      Switzerland                            Europe
-## 170                            Syria                       Middle East
-## 171                       Tajikistan                      Central Asia
-## 172                         Tanzania                            Africa
-## 173                         Thailand           East and Southeast Asia
-## 174                      The Bahamas Central America and the Caribbean
-## 175                      Timor-Leste           East and Southeast Asia
-## 176                             Togo                            Africa
-## 177                            Tonga             Australia and Oceania
-## 178              Trinidad and Tobago Central America and the Caribbean
-## 179                          Tunisia                            Africa
-## 180                           Turkey                       Middle East
-## 181                     Turkmenistan                      Central Asia
-## 182                           Tuvalu             Australia and Oceania
-## 183                           Uganda                            Africa
-## 184                          Ukraine                            Europe
-## 185             United Arab Emirates                       Middle East
-## 186                   United Kingdom                            Europe
-## 187                    United States                     North America
-## 188                          Uruguay                     South America
-## 189                       Uzbekistan                      Central Asia
-## 190                          Vanuatu             Australia and Oceania
-## 191                        Venezuela                     South America
-## 192                          Vietnam           East and Southeast Asia
-## 193                        West Bank                       Middle East
-## 194                            Yemen                       Middle East
-## 195                           Zambia                            Africa
-## 196                         Zimbabwe                            Africa
-##     Infant_Deaths_Per_1K Expected_Years_To_Live Deaths_Per_100K_Live_Births
-## 1                  101.3                   54.4                         521
-## 2                   10.3                   79.9                           7
-## 3                   18.7                   77.9                          62
-## 4                    3.3                   83.8                          11
-## 5                   55.6                   62.9                         183
-## 6                   13.6                   78.3                          35
-## 7                    9.0                   78.8                          33
-## 8                   11.6                   76.7                          19
-## 9                    2.9                   83.5                           2
-## 10                   3.2                   82.7                           6
-## 11                  10.9                   75.9                          18
-## 12                   9.7                   80.4                          17
-## 13                  28.8                   75.2                         115
-## 14                   9.6                   79.0                          35
-## 15                   2.1                   74.7                           1
-## 16                   3.1                   82.3                           4
-## 17                  11.3                   74.3                          67
-## 18                  52.9                   63.0                         518
-## 19                  24.3                   73.7                          47
-## 20                  22.3                   72.5                         146
-## 21                   5.0                   78.5                           6
-## 22                  23.7                   66.4                         155
-## 23                  12.9                   76.3                          67
-## 24                  10.0                   78.9                          36
-## 25                   7.7                   76.1                           6
-## 26                  47.0                   64.2                         242
-## 27                  32.1                   70.3                         185
-## 28                  35.7                   68.1                         392
-## 29                  22.4                   74.3                          40
-## 30                  27.9                   71.4                         137
-## 31                  46.1                   64.2                         258
-## 32                   4.3                   84.2                          12
-## 33                  80.5                   56.4                         692
-## 34                  62.5                   60.0                         748
-## 35                   6.3                   80.3                          10
-## 36                   6.2                   78.7                          16
-## 37                  11.7                   74.9                          59
-## 38                  54.9                   67.8                         179
-## 39                  15.1                   77.6                           0
-## 40                   6.7                   80.3                          24
-## 41                   8.4                   77.7                           3
-## 42                   4.0                   80.1                          35
-## 43                   8.1                   80.2                          14
-## 44                   2.6                   78.6                           3
-## 45                  57.4                   62.6                         427
-## 46                   3.0                   82.1                           4
-## 47                  45.2                   65.9                         162
-## 48                  10.7                   78.7                          36
-## 49                  21.7                   72.6                         124
-## 50                  11.2                   74.9                          55
-## 51                  16.8                   75.0                          17
-## 52                  11.7                   75.9                          39
-## 53                  77.4                   63.9                         174
-## 54                  39.8                   67.5                         291
-## 55                   3.3                   78.4                           5
-## 56                  36.7                   60.7                         118
-## 57                  32.6                   67.7                         195
-## 58                  20.9                   75.0                         129
-## 59                   9.7                   74.8                          30
-## 60                   2.1                   82.2                           8
-## 61                   3.1                   82.6                           7
-## 62                  26.9                   70.4                         233
-## 63                  35.7                   68.4                         354
-## 64                  15.1                   75.5                          16
-## 65                  21.7                   72.8                          20
-## 66                   3.1                   81.9                           4
-## 67                  31.2                   70.1                         234
-## 68                   3.4                   81.9                           5
-## 69                   9.0                   76.3                          48
-## 70                  25.0                   73.5                          94
-## 71                  47.0                   64.6                         494
-## 72                  46.4                   64.5                         505
-## 73                  21.1                   72.4                          75
-## 74                  36.8                   65.6                         328
-## 75                  15.4                   73.1                          47
-## 76                   4.7                   76.0                          12
-## 77                   1.6                   84.0                           3
-## 78                  30.4                   68.2                          80
-## 79                  18.9                   73.6                         140
-## 80                  14.3                   75.6                          16
-## 81                  18.7                   73.7                          66
-## 82                   3.3                   82.0                           4
-## 83                   2.8                   83.1                           2
-## 84                   3.1                   83.0                           6
-## 85                  52.5                   63.2                         359
-## 86                  10.7                   76.3                         130
-## 87                   1.9                   85.2                           3
-## 88                  13.2                   76.5                          31
-## 89                   8.0                   73.3                          10
-## 90                  26.1                   70.4                         379
-## 91                  31.5                   68.5                          80
-## 92                   7.2                   79.6                           8
-## 93                  24.5                   72.9                          42
-## 94                  35.4                   69.0                         112
-## 95                   4.7                   76.4                          19
-## 96                   6.7                   79.2                          15
-## 97                  45.7                   60.2                         478
-## 98                  55.7                   61.6                         628
-## 99                  10.7                   77.7                          59
-## 100                  3.6                   76.1                           8
-## 101                  3.2                   83.4                          12
-## 102                 37.5                   68.8                         445
-## 103                 31.9                   73.0                         225
-## 104                  6.4                   76.6                          26
-## 105                 24.4                   77.4                          32
-## 106                 57.4                   63.2                         367
-## 107                  4.4                   83.6                           8
-## 108                 20.6                   75.2                         155
-## 109                 48.9                   65.9                         381
-## 110                 11.6                   75.4                          66
-## 111                 12.1                   74.6                          42
-## 112                 13.8                   70.1                          19
-## 113                  1.7                   89.8                           5
-## 114                 19.4                   71.9                          41
-## 115                  3.2                   78.2                           6
-## 116                 18.3                   74.2                          70
-## 117                 58.2                   58.3                          82
-## 118                 27.9                   65.9                         139
-## 119                  7.6                   68.6                         273
-## 120                 24.0                   73.0                         142
-## 121                  3.6                   81.9                           4
-## 122                  3.3                   82.9                           7
-## 123                 14.4                   74.7                          60
-## 124                 64.3                   60.9                         350
-## 125                 53.7                   62.2                         993
-## 126                 15.4                   73.5                          67
-## 127                  7.0                   77.3                           3
-## 128                  1.8                   82.9                           1
-## 129                 13.9                   77.4                          13
-## 130                 51.5                   70.3                         155
-## 131                 10.8                   75.2                          89
-## 132                 14.2                   79.2                          37
-## 133                 32.0                   70.1                         189
-## 134                 22.0                   78.8                          58
-## 135                 10.8                   68.9                          51
-## 136                 22.0                   70.8                          84
-## 137                  4.9                   76.7                           2
-## 138                  2.4                   81.9                          15
-## 139                  5.8                   82.1                          11
-## 140                  6.4                   80.3                           4
-## 141                 30.6                   72.9                         241
-## 142                  5.5                   76.9                          12
-## 143                  6.5                   72.3                           9
-## 144                 24.9                   66.6                         229
-## 145                  8.0                   77.6                          74
-## 146                 11.5                   79.4                          44
-## 147                 12.3                   77.2                          56
-## 148                 17.3                   75.7                         101
-## 149                  6.2                   84.2                           8
-## 150                 42.6                   67.7                          75
-## 151                 11.7                   77.2                           7
-## 152                 31.1                   70.6                         237
-## 153                  4.5                   75.3                          11
-## 154                 10.2                   76.6                          42
-## 155                 71.2                   59.4                         354
-## 156                  1.5                   86.7                           6
-## 157                  5.1                   77.2                           4
-## 158                  1.5                   82.2                           3
-## 159                 19.1                   77.2                         123
-## 160                 83.6                   56.5                         563
-## 161                 21.9                   71.9                         118
-## 162                  2.8                   83.4                           4
-## 163                 60.1                   60.3                         692
-## 164                  2.4                   83.0                           3
-## 165                  6.8                   76.8                          18
-## 166                 40.6                   67.8                         256
-## 167                 29.6                   72.7                          84
-## 168                  2.3                   82.9                           4
-## 169                  3.0                   83.9                           5
-## 170                 15.1                   74.8                          20
-## 171                 21.7                   71.9                          14
-## 172                 29.6                   70.8                         276
-## 173                  6.3                   78.2                          34
-## 174                  9.4                   76.7                          76
-## 175                 32.2                   70.5                         192
-## 176                 38.4                   72.1                         349
-## 177                 11.8                   78.0                          67
-## 178                 15.1                   76.5                          54
-## 179                 11.3                   77.3                          36
-## 180                 18.4                   76.7                          15
-## 181                 35.9                   72.4                           5
-## 182                 27.8                   69.0                         170
-## 183                 28.5                   69.7                         170
-## 184                  8.7                   70.5                          15
-## 185                  5.0                   79.9                           3
-## 186                  3.8                   82.2                           8
-## 187                  5.1                   80.9                          17
-## 188                  8.0                   78.9                          15
-## 189                 18.2                   76.2                          26
-## 190                 13.7                   75.7                         100
-## 191                 13.9                   74.5                         227
-## 192                 14.1                   76.1                          48
-## 193                 15.1                   76.5                          16
-## 194                 44.6                   68.2                         118
-## 195                 35.6                   66.9                          85
-## 196                 33.4                   67.2                         358</code></pre>
+# Display head of data frame to verify changes
+head(final_merged_data,20)</code></pre>
+<pre><code>##                Country                            Region Infant_Deaths_Per_1K
+## 1          Afghanistan                        South Asia                101.3
+## 2              Albania                            Europe                 10.3
+## 3              Algeria                            Africa                 18.7
+## 4              Andorra                            Europe                  3.3
+## 5               Angola                            Africa                 55.6
+## 6  Antigua and Barbuda Central America and the Caribbean                 13.6
+## 7            Argentina                     South America                  9.0
+## 8              Armenia                      Central Asia                 11.6
+## 9            Australia             Australia and Oceania                  2.9
+## 10             Austria                            Europe                  3.2
+## 11          Azerbaijan                      Central Asia                 10.9
+## 12             Bahrain                       Middle East                  9.7
+## 13          Bangladesh                        South Asia                 28.8
+## 14            Barbados Central America and the Caribbean                  9.6
+## 15             Belarus                            Europe                  2.1
+## 16             Belgium                            Europe                  3.1
+## 17              Belize Central America and the Caribbean                 11.3
+## 18               Benin                            Africa                 52.9
+## 19              Bhutan                        South Asia                 24.3
+## 20             Bolivia                     South America                 22.3
+##    Expected_Years_To_Live Deaths_Per_100K_Live_Births
+## 1                    54.4                         521
+## 2                    79.9                           7
+## 3                    77.9                          62
+## 4                    83.8                          11
+## 5                    62.9                         183
+## 6                    78.3                          35
+## 7                    78.8                          33
+## 8                    76.7                          19
+## 9                    83.5                           2
+## 10                   82.7                           6
+## 11                   75.9                          18
+## 12                   80.4                          17
+## 13                   75.2                         115
+## 14                   79.0                          35
+## 15                   74.7                           1
+## 16                   82.3                           4
+## 17                   74.3                          67
+## 18                   63.0                         518
+## 19                   73.7                          47
+## 20                   72.5                         146</code></pre>
 <pre class="r"><code>#saving as an RDS file
 saveRDS(final_merged_data,&quot;Final_Merged_Data_HW4&quot;)</code></pre>
 <pre class="r"><code>#reading to verify
@@ -1699,36 +548,15 @@ library(dplyr)</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code># Group the data by &#39;Region&#39; and calculate the sum of numerical columns.  I chose sum, because I want to know the death data by region.
+<pre class="r"><code># Group the data by &#39;Region&#39; and calculate the sum of numerical columns.  I chose sum, because I want to know the data by region.
 aggregated_data_by_region &lt;- final_merged_data %&gt;%
   group_by(Region) %&gt;%
   summarise(
     Total_Infant_Deaths_Per_1K = sum(Infant_Deaths_Per_1K, na.rm = TRUE),
     Total_Expected_Years_To_Live = sum(Expected_Years_To_Live, na.rm = TRUE),
     Total_Deaths_Per_100K_Live_Births = sum(Deaths_Per_100K_Live_Births, na.rm = TRUE)
-  )
-
-# Display the aggregated data for verfication purposes.
-print(&quot;Aggregated data by Region (Totals):&quot;)</code></pre>
-<pre><code>## [1] &quot;Aggregated data by Region (Totals):&quot;</code></pre>
-<pre class="r"><code>print(aggregated_data_by_region)</code></pre>
-<pre><code>## # A tibble: 10 × 4
-##    Region   Total_Infant_Deaths_…¹ Total_Expected_Years…² Total_Deaths_Per_100…³
-##    &lt;chr&gt;                     &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;int&gt;
-##  1 Africa                   2187.                   3622.                  15775
-##  2 Austral…                  212.                   1057.                   1326
-##  3 Central…                  277.                   1607.                   1454
-##  4 Central…                  159                     664.                    163
-##  5 East an…                  284.                   1285.                   1320
-##  6 Europe                    182.                   3365.                    294
-##  7 Middle …                  218.                   1235.                    367
-##  8 North A…                   21.5                   240.                     71
-##  9 South A…                  179.                    904.                    880
-## 10 South A…                  292.                    569                    1110
-## # ℹ abbreviated names: ¹​Total_Infant_Deaths_Per_1K,
-## #   ²​Total_Expected_Years_To_Live, ³​Total_Deaths_Per_100K_Live_Births</code></pre>
-<pre class="r"><code>#formatted veiw for additional verfication.
-aggregated_data_by_region</code></pre>
+  )</code></pre>
+<pre class="r"><code>head(aggregated_data_by_region,20) #showing the head to verify - first 20 rows</code></pre>
 <pre><code>## # A tibble: 10 × 4
 ##    Region   Total_Infant_Deaths_…¹ Total_Expected_Years…² Total_Deaths_Per_100…³
 ##    &lt;chr&gt;                     &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;int&gt;
@@ -1767,443 +595,98 @@ str(aggregated_data_by_region)</code></pre>
 <pre class="r"><code>#reading the data frame from exercise 1.
 read=final_merged_data</code></pre>
 <pre class="r"><code>#formatted view for verification that the data continues to display as expected.
-final_merged_data</code></pre>
-<pre><code>##                              Country                            Region
-## 1                        Afghanistan                        South Asia
-## 2                            Albania                            Europe
-## 3                            Algeria                            Africa
-## 4                            Andorra                            Europe
-## 5                             Angola                            Africa
-## 6                Antigua and Barbuda Central America and the Caribbean
-## 7                          Argentina                     South America
-## 8                            Armenia                      Central Asia
-## 9                          Australia             Australia and Oceania
-## 10                           Austria                            Europe
-## 11                        Azerbaijan                      Central Asia
-## 12                           Bahrain                       Middle East
-## 13                        Bangladesh                        South Asia
-## 14                          Barbados Central America and the Caribbean
-## 15                           Belarus                            Europe
-## 16                           Belgium                            Europe
-## 17                            Belize Central America and the Caribbean
-## 18                             Benin                            Africa
-## 19                            Bhutan                        South Asia
-## 20                           Bolivia                     South America
-## 21            Bosnia and Herzegovina                            Europe
-## 22                          Botswana                            Africa
-## 23                            Brazil                     South America
-## 24                            Brunei           East and Southeast Asia
-## 25                          Bulgaria                            Europe
-## 26                      Burkina Faso                            Africa
-## 27                             Burma           East and Southeast Asia
-## 28                           Burundi                            Africa
-## 29                        Cabo Verde                            Africa
-## 30                          Cambodia           East and Southeast Asia
-## 31                          Cameroon                            Africa
-## 32                            Canada                     North America
-## 33          Central African Republic                            Africa
-## 34                              Chad                            Africa
-## 35                             Chile                     South America
-## 36                             China           East and Southeast Asia
-## 37                          Colombia                     South America
-## 38                           Comoros                            Africa
-## 39                      Cook Islands             Australia and Oceania
-## 40                        Costa Rica Central America and the Caribbean
-## 41                           Croatia                            Europe
-## 42                              Cuba Central America and the Caribbean
-## 43                            Cyprus                            Europe
-## 44                           Czechia                            Europe
-## 45  Democratic Republic of the Congo                            Africa
-## 46                           Denmark                            Europe
-## 47                          Djibouti                            Africa
-## 48                          Dominica Central America and the Caribbean
-## 49                Dominican Republic Central America and the Caribbean
-## 50                           Ecuador                     South America
-## 51                             Egypt                            Africa
-## 52                       El Salvador Central America and the Caribbean
-## 53                 Equatorial Guinea                            Africa
-## 54                           Eritrea                            Africa
-## 55                           Estonia                            Europe
-## 56                          Eswatini                            Africa
-## 57                          Ethiopia                            Africa
-## 58    Federated States of Micronesia             Australia and Oceania
-## 59                              Fiji             Australia and Oceania
-## 60                           Finland                            Europe
-## 61                            France                            Europe
-## 62                             Gabon                            Africa
-## 63                            Gambia                            Africa
-## 64                        Gaza Strip                       Middle East
-## 65                           Georgia                      Central Asia
-## 66                           Germany                            Europe
-## 67                             Ghana                            Africa
-## 68                            Greece                            Europe
-## 69                           Grenada Central America and the Caribbean
-## 70                         Guatemala Central America and the Caribbean
-## 71                            Guinea                            Africa
-## 72                     Guinea-Bissau                            Africa
-## 73                            Guyana                     South America
-## 74                             Haiti Central America and the Caribbean
-## 75                          Honduras Central America and the Caribbean
-## 76                           Hungary                            Europe
-## 77                           Iceland                            Europe
-## 78                             India                        South Asia
-## 79                         Indonesia           East and Southeast Asia
-## 80                              Iran                       Middle East
-## 81                              Iraq                       Middle East
-## 82                           Ireland                            Europe
-## 83                            Israel                       Middle East
-## 84                             Italy                            Europe
-## 85                       Ivory Coast                            Africa
-## 86                           Jamaica Central America and the Caribbean
-## 87                             Japan           East and Southeast Asia
-## 88                            Jordan                       Middle East
-## 89                        Kazakhstan                      Central Asia
-## 90                             Kenya                            Africa
-## 91                          Kiribati             Australia and Oceania
-## 92                            Kuwait                       Middle East
-## 93                        Kyrgyzstan                      Central Asia
-## 94                              Laos           East and Southeast Asia
-## 95                            Latvia                            Europe
-## 96                           Lebanon                       Middle East
-## 97                           Lesotho                            Africa
-## 98                           Liberia                            Africa
-## 99                             Libya                            Africa
-## 100                        Lithuania                            Europe
-## 101                       Luxembourg                            Europe
-## 102                       Madagascar                            Africa
-## 103                           Malawi                            Africa
-## 104                         Malaysia           East and Southeast Asia
-## 105                         Maldives                        South Asia
-## 106                             Mali                            Africa
-## 107                            Malta                            Europe
-## 108                 Marshall Islands             Australia and Oceania
-## 109                       Mauritania                            Africa
-## 110                        Mauritius                            Africa
-## 111                           Mexico                     North America
-## 112                          Moldova                            Europe
-## 113                           Monaco                            Europe
-## 114                         Mongolia           East and Southeast Asia
-## 115                       Montenegro                            Europe
-## 116                          Morocco                            Africa
-## 117                       Mozambique                            Africa
-## 118                          Namibia                            Africa
-## 119                            Nauru             Australia and Oceania
-## 120                            Nepal                        South Asia
-## 121                      Netherlands                            Europe
-## 122                      New Zealand             Australia and Oceania
-## 123                        Nicaragua Central America and the Caribbean
-## 124                            Niger                            Africa
-## 125                          Nigeria                            Africa
-## 126                      North Korea           East and Southeast Asia
-## 127                  North Macedonia                            Europe
-## 128                           Norway                            Europe
-## 129                             Oman                       Middle East
-## 130                         Pakistan                        South Asia
-## 131                            Palau             Australia and Oceania
-## 132                           Panama Central America and the Caribbean
-## 133                 Papua New Guinea           East and Southeast Asia
-## 134                         Paraguay                     South America
-## 135                             Peru                     South America
-## 136                      Philippines           East and Southeast Asia
-## 137                           Poland                            Europe
-## 138                         Portugal                            Europe
-## 139                      Puerto Rico Central America and the Caribbean
-## 140                            Qatar                       Middle East
-## 141            Republic of the Congo                            Africa
-## 142                          Romania                            Europe
-## 143                           Russia                      Central Asia
-## 144                           Rwanda                            Africa
-## 145            Saint Kitts and Nevis Central America and the Caribbean
-## 146                      Saint Lucia Central America and the Caribbean
-## 147 Saint Vincent and the Grenadines Central America and the Caribbean
-## 148                            Samoa             Australia and Oceania
-## 149                       San Marino                            Europe
-## 150            Sao Tome and Principe                            Africa
-## 151                     Saudi Arabia                       Middle East
-## 152                          Senegal                            Africa
-## 153                           Serbia                            Europe
-## 154                       Seychelles                            Africa
-## 155                     Sierra Leone                            Africa
-## 156                        Singapore           East and Southeast Asia
-## 157                         Slovakia                            Europe
-## 158                         Slovenia                            Europe
-## 159                  Solomon Islands             Australia and Oceania
-## 160                          Somalia                            Africa
-## 161                     South Africa                            Africa
-## 162                      South Korea           East and Southeast Asia
-## 163                      South Sudan                            Africa
-## 164                            Spain                            Europe
-## 165                        Sri Lanka                        South Asia
-## 166                            Sudan                            Africa
-## 167                         Suriname                     South America
-## 168                           Sweden                            Europe
-## 169                      Switzerland                            Europe
-## 170                            Syria                       Middle East
-## 171                       Tajikistan                      Central Asia
-## 172                         Tanzania                            Africa
-## 173                         Thailand           East and Southeast Asia
-## 174                      The Bahamas Central America and the Caribbean
-## 175                      Timor-Leste           East and Southeast Asia
-## 176                             Togo                            Africa
-## 177                            Tonga             Australia and Oceania
-## 178              Trinidad and Tobago Central America and the Caribbean
-## 179                          Tunisia                            Africa
-## 180                           Turkey                       Middle East
-## 181                     Turkmenistan                      Central Asia
-## 182                           Tuvalu             Australia and Oceania
-## 183                           Uganda                            Africa
-## 184                          Ukraine                            Europe
-## 185             United Arab Emirates                       Middle East
-## 186                   United Kingdom                            Europe
-## 187                    United States                     North America
-## 188                          Uruguay                     South America
-## 189                       Uzbekistan                      Central Asia
-## 190                          Vanuatu             Australia and Oceania
-## 191                        Venezuela                     South America
-## 192                          Vietnam           East and Southeast Asia
-## 193                        West Bank                       Middle East
-## 194                            Yemen                       Middle East
-## 195                           Zambia                            Africa
-## 196                         Zimbabwe                            Africa
-##     Infant_Deaths_Per_1K Expected_Years_To_Live Deaths_Per_100K_Live_Births
-## 1                  101.3                   54.4                         521
-## 2                   10.3                   79.9                           7
-## 3                   18.7                   77.9                          62
-## 4                    3.3                   83.8                          11
-## 5                   55.6                   62.9                         183
-## 6                   13.6                   78.3                          35
-## 7                    9.0                   78.8                          33
-## 8                   11.6                   76.7                          19
-## 9                    2.9                   83.5                           2
-## 10                   3.2                   82.7                           6
-## 11                  10.9                   75.9                          18
-## 12                   9.7                   80.4                          17
-## 13                  28.8                   75.2                         115
-## 14                   9.6                   79.0                          35
-## 15                   2.1                   74.7                           1
-## 16                   3.1                   82.3                           4
-## 17                  11.3                   74.3                          67
-## 18                  52.9                   63.0                         518
-## 19                  24.3                   73.7                          47
-## 20                  22.3                   72.5                         146
-## 21                   5.0                   78.5                           6
-## 22                  23.7                   66.4                         155
-## 23                  12.9                   76.3                          67
-## 24                  10.0                   78.9                          36
-## 25                   7.7                   76.1                           6
-## 26                  47.0                   64.2                         242
-## 27                  32.1                   70.3                         185
-## 28                  35.7                   68.1                         392
-## 29                  22.4                   74.3                          40
-## 30                  27.9                   71.4                         137
-## 31                  46.1                   64.2                         258
-## 32                   4.3                   84.2                          12
-## 33                  80.5                   56.4                         692
-## 34                  62.5                   60.0                         748
-## 35                   6.3                   80.3                          10
-## 36                   6.2                   78.7                          16
-## 37                  11.7                   74.9                          59
-## 38                  54.9                   67.8                         179
-## 39                  15.1                   77.6                           0
-## 40                   6.7                   80.3                          24
-## 41                   8.4                   77.7                           3
-## 42                   4.0                   80.1                          35
-## 43                   8.1                   80.2                          14
-## 44                   2.6                   78.6                           3
-## 45                  57.4                   62.6                         427
-## 46                   3.0                   82.1                           4
-## 47                  45.2                   65.9                         162
-## 48                  10.7                   78.7                          36
-## 49                  21.7                   72.6                         124
-## 50                  11.2                   74.9                          55
-## 51                  16.8                   75.0                          17
-## 52                  11.7                   75.9                          39
-## 53                  77.4                   63.9                         174
-## 54                  39.8                   67.5                         291
-## 55                   3.3                   78.4                           5
-## 56                  36.7                   60.7                         118
-## 57                  32.6                   67.7                         195
-## 58                  20.9                   75.0                         129
-## 59                   9.7                   74.8                          30
-## 60                   2.1                   82.2                           8
-## 61                   3.1                   82.6                           7
-## 62                  26.9                   70.4                         233
-## 63                  35.7                   68.4                         354
-## 64                  15.1                   75.5                          16
-## 65                  21.7                   72.8                          20
-## 66                   3.1                   81.9                           4
-## 67                  31.2                   70.1                         234
-## 68                   3.4                   81.9                           5
-## 69                   9.0                   76.3                          48
-## 70                  25.0                   73.5                          94
-## 71                  47.0                   64.6                         494
-## 72                  46.4                   64.5                         505
-## 73                  21.1                   72.4                          75
-## 74                  36.8                   65.6                         328
-## 75                  15.4                   73.1                          47
-## 76                   4.7                   76.0                          12
-## 77                   1.6                   84.0                           3
-## 78                  30.4                   68.2                          80
-## 79                  18.9                   73.6                         140
-## 80                  14.3                   75.6                          16
-## 81                  18.7                   73.7                          66
-## 82                   3.3                   82.0                           4
-## 83                   2.8                   83.1                           2
-## 84                   3.1                   83.0                           6
-## 85                  52.5                   63.2                         359
-## 86                  10.7                   76.3                         130
-## 87                   1.9                   85.2                           3
-## 88                  13.2                   76.5                          31
-## 89                   8.0                   73.3                          10
-## 90                  26.1                   70.4                         379
-## 91                  31.5                   68.5                          80
-## 92                   7.2                   79.6                           8
-## 93                  24.5                   72.9                          42
-## 94                  35.4                   69.0                         112
-## 95                   4.7                   76.4                          19
-## 96                   6.7                   79.2                          15
-## 97                  45.7                   60.2                         478
-## 98                  55.7                   61.6                         628
-## 99                  10.7                   77.7                          59
-## 100                  3.6                   76.1                           8
-## 101                  3.2                   83.4                          12
-## 102                 37.5                   68.8                         445
-## 103                 31.9                   73.0                         225
-## 104                  6.4                   76.6                          26
-## 105                 24.4                   77.4                          32
-## 106                 57.4                   63.2                         367
-## 107                  4.4                   83.6                           8
-## 108                 20.6                   75.2                         155
-## 109                 48.9                   65.9                         381
-## 110                 11.6                   75.4                          66
-## 111                 12.1                   74.6                          42
-## 112                 13.8                   70.1                          19
-## 113                  1.7                   89.8                           5
-## 114                 19.4                   71.9                          41
-## 115                  3.2                   78.2                           6
-## 116                 18.3                   74.2                          70
-## 117                 58.2                   58.3                          82
-## 118                 27.9                   65.9                         139
-## 119                  7.6                   68.6                         273
-## 120                 24.0                   73.0                         142
-## 121                  3.6                   81.9                           4
-## 122                  3.3                   82.9                           7
-## 123                 14.4                   74.7                          60
-## 124                 64.3                   60.9                         350
-## 125                 53.7                   62.2                         993
-## 126                 15.4                   73.5                          67
-## 127                  7.0                   77.3                           3
-## 128                  1.8                   82.9                           1
-## 129                 13.9                   77.4                          13
-## 130                 51.5                   70.3                         155
-## 131                 10.8                   75.2                          89
-## 132                 14.2                   79.2                          37
-## 133                 32.0                   70.1                         189
-## 134                 22.0                   78.8                          58
-## 135                 10.8                   68.9                          51
-## 136                 22.0                   70.8                          84
-## 137                  4.9                   76.7                           2
-## 138                  2.4                   81.9                          15
-## 139                  5.8                   82.1                          11
-## 140                  6.4                   80.3                           4
-## 141                 30.6                   72.9                         241
-## 142                  5.5                   76.9                          12
-## 143                  6.5                   72.3                           9
-## 144                 24.9                   66.6                         229
-## 145                  8.0                   77.6                          74
-## 146                 11.5                   79.4                          44
-## 147                 12.3                   77.2                          56
-## 148                 17.3                   75.7                         101
-## 149                  6.2                   84.2                           8
-## 150                 42.6                   67.7                          75
-## 151                 11.7                   77.2                           7
-## 152                 31.1                   70.6                         237
-## 153                  4.5                   75.3                          11
-## 154                 10.2                   76.6                          42
-## 155                 71.2                   59.4                         354
-## 156                  1.5                   86.7                           6
-## 157                  5.1                   77.2                           4
-## 158                  1.5                   82.2                           3
-## 159                 19.1                   77.2                         123
-## 160                 83.6                   56.5                         563
-## 161                 21.9                   71.9                         118
-## 162                  2.8                   83.4                           4
-## 163                 60.1                   60.3                         692
-## 164                  2.4                   83.0                           3
-## 165                  6.8                   76.8                          18
-## 166                 40.6                   67.8                         256
-## 167                 29.6                   72.7                          84
-## 168                  2.3                   82.9                           4
-## 169                  3.0                   83.9                           5
-## 170                 15.1                   74.8                          20
-## 171                 21.7                   71.9                          14
-## 172                 29.6                   70.8                         276
-## 173                  6.3                   78.2                          34
-## 174                  9.4                   76.7                          76
-## 175                 32.2                   70.5                         192
-## 176                 38.4                   72.1                         349
-## 177                 11.8                   78.0                          67
-## 178                 15.1                   76.5                          54
-## 179                 11.3                   77.3                          36
-## 180                 18.4                   76.7                          15
-## 181                 35.9                   72.4                           5
-## 182                 27.8                   69.0                         170
-## 183                 28.5                   69.7                         170
-## 184                  8.7                   70.5                          15
-## 185                  5.0                   79.9                           3
-## 186                  3.8                   82.2                           8
-## 187                  5.1                   80.9                          17
-## 188                  8.0                   78.9                          15
-## 189                 18.2                   76.2                          26
-## 190                 13.7                   75.7                         100
-## 191                 13.9                   74.5                         227
-## 192                 14.1                   76.1                          48
-## 193                 15.1                   76.5                          16
-## 194                 44.6                   68.2                         118
-## 195                 35.6                   66.9                          85
-## 196                 33.4                   67.2                         358</code></pre>
-<pre class="r"><code>#code chunk to conver the data from wide to long format.  Combining all non-region/country columns into a &#39;Death Type&#39; column.  Values column is designated as &quot;Deaths&quot;, which are the number of deaths per each death type.
+head(final_merged_data,20)</code></pre>
+<pre><code>##                Country                            Region Infant_Deaths_Per_1K
+## 1          Afghanistan                        South Asia                101.3
+## 2              Albania                            Europe                 10.3
+## 3              Algeria                            Africa                 18.7
+## 4              Andorra                            Europe                  3.3
+## 5               Angola                            Africa                 55.6
+## 6  Antigua and Barbuda Central America and the Caribbean                 13.6
+## 7            Argentina                     South America                  9.0
+## 8              Armenia                      Central Asia                 11.6
+## 9            Australia             Australia and Oceania                  2.9
+## 10             Austria                            Europe                  3.2
+## 11          Azerbaijan                      Central Asia                 10.9
+## 12             Bahrain                       Middle East                  9.7
+## 13          Bangladesh                        South Asia                 28.8
+## 14            Barbados Central America and the Caribbean                  9.6
+## 15             Belarus                            Europe                  2.1
+## 16             Belgium                            Europe                  3.1
+## 17              Belize Central America and the Caribbean                 11.3
+## 18               Benin                            Africa                 52.9
+## 19              Bhutan                        South Asia                 24.3
+## 20             Bolivia                     South America                 22.3
+##    Expected_Years_To_Live Deaths_Per_100K_Live_Births
+## 1                    54.4                         521
+## 2                    79.9                           7
+## 3                    77.9                          62
+## 4                    83.8                          11
+## 5                    62.9                         183
+## 6                    78.3                          35
+## 7                    78.8                          33
+## 8                    76.7                          19
+## 9                    83.5                           2
+## 10                   82.7                           6
+## 11                   75.9                          18
+## 12                   80.4                          17
+## 13                   75.2                         115
+## 14                   79.0                          35
+## 15                   74.7                           1
+## 16                   82.3                           4
+## 17                   74.3                          67
+## 18                   63.0                         518
+## 19                   73.7                          47
+## 20                   72.5                         146</code></pre>
+<pre class="r"><code>#code chunk to convert the data from wide to long format.  Combining all non-region/country columns into a &#39;Death Type&#39; column.  Values column is designated as &quot;Deaths&quot;, which are the number of deaths per each death type.
 Merged_Data_Long=tidyr::pivot_longer(data=final_merged_data,
                                 cols=c(Infant_Deaths_Per_1K, Expected_Years_To_Live, Deaths_Per_100K_Live_Births),
-                                names_to = &quot;Death Type&quot;,
-                                values_to = &quot;Deaths&quot;)
+                                names_to = &quot;Infant_LifeExp_Maternal&quot;,
+                                values_to = &quot;Data&quot;)
 
 #remove the region column
-Merged_Data_Long &lt;- subset(Merged_Data_Long, select = -c(Region))
-
-#formatted view for verifcation of the code
-Merged_Data_Long</code></pre>
-<pre><code>## # A tibble: 588 × 3
-##    Country     `Death Type`                Deaths
-##    &lt;chr&gt;       &lt;chr&gt;                        &lt;dbl&gt;
-##  1 Afghanistan Infant_Deaths_Per_1K         101. 
-##  2 Afghanistan Expected_Years_To_Live        54.4
-##  3 Afghanistan Deaths_Per_100K_Live_Births  521  
-##  4 Albania     Infant_Deaths_Per_1K          10.3
-##  5 Albania     Expected_Years_To_Live        79.9
-##  6 Albania     Deaths_Per_100K_Live_Births    7  
-##  7 Algeria     Infant_Deaths_Per_1K          18.7
-##  8 Algeria     Expected_Years_To_Live        77.9
-##  9 Algeria     Deaths_Per_100K_Live_Births   62  
-## 10 Andorra     Infant_Deaths_Per_1K           3.3
-## # ℹ 578 more rows</code></pre>
+Merged_Data_Long &lt;- subset(Merged_Data_Long, select = -c(Region))</code></pre>
+<pre class="r"><code>head(Merged_Data_Long,20) #Show head for further verfication - first 20 rows</code></pre>
+<pre><code>## # A tibble: 20 × 3
+##    Country             Infant_LifeExp_Maternal      Data
+##    &lt;chr&gt;               &lt;chr&gt;                       &lt;dbl&gt;
+##  1 Afghanistan         Infant_Deaths_Per_1K        101. 
+##  2 Afghanistan         Expected_Years_To_Live       54.4
+##  3 Afghanistan         Deaths_Per_100K_Live_Births 521  
+##  4 Albania             Infant_Deaths_Per_1K         10.3
+##  5 Albania             Expected_Years_To_Live       79.9
+##  6 Albania             Deaths_Per_100K_Live_Births   7  
+##  7 Algeria             Infant_Deaths_Per_1K         18.7
+##  8 Algeria             Expected_Years_To_Live       77.9
+##  9 Algeria             Deaths_Per_100K_Live_Births  62  
+## 10 Andorra             Infant_Deaths_Per_1K          3.3
+## 11 Andorra             Expected_Years_To_Live       83.8
+## 12 Andorra             Deaths_Per_100K_Live_Births  11  
+## 13 Angola              Infant_Deaths_Per_1K         55.6
+## 14 Angola              Expected_Years_To_Live       62.9
+## 15 Angola              Deaths_Per_100K_Live_Births 183  
+## 16 Antigua and Barbuda Infant_Deaths_Per_1K         13.6
+## 17 Antigua and Barbuda Expected_Years_To_Live       78.3
+## 18 Antigua and Barbuda Deaths_Per_100K_Live_Births  35  
+## 19 Argentina           Infant_Deaths_Per_1K          9  
+## 20 Argentina           Expected_Years_To_Live       78.8</code></pre>
 <pre class="r"><code>#save as RDS file.
 saveRDS(Merged_Data_Long,&quot;Merged_Data_LongRDS&quot;)</code></pre>
 <pre class="r"><code>#read RDS file for verification
 Merged_Data_Long=readRDS(&quot;Merged_Data_LongRDS&quot;)
 str(Merged_Data_Long)</code></pre>
 <pre><code>## tibble [588 × 3] (S3: tbl_df/tbl/data.frame)
-##  $ Country   : chr [1:588] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Albania&quot; ...
-##  $ Death Type: chr [1:588] &quot;Infant_Deaths_Per_1K&quot; &quot;Expected_Years_To_Live&quot; &quot;Deaths_Per_100K_Live_Births&quot; &quot;Infant_Deaths_Per_1K&quot; ...
-##  $ Deaths    : num [1:588] 101.3 54.4 521 10.3 79.9 ...</code></pre>
+##  $ Country                : chr [1:588] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Albania&quot; ...
+##  $ Infant_LifeExp_Maternal: chr [1:588] &quot;Infant_Deaths_Per_1K&quot; &quot;Expected_Years_To_Live&quot; &quot;Deaths_Per_100K_Live_Births&quot; &quot;Infant_Deaths_Per_1K&quot; ...
+##  $ Data                   : num [1:588] 101.3 54.4 521 10.3 79.9 ...</code></pre>
 <pre class="r"><code>#save as CSV file and view for verification
 write.csv(Merged_Data_Long,&quot;Merged_Data_Long2.csv&quot;, row.names=FALSE)
 Merged_Data_Long=read.csv(&quot;Merged_Data_Long2.csv&quot;)
 str(Merged_Data_Long)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    588 obs. of  3 variables:
-##  $ Country   : chr  &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Albania&quot; ...
-##  $ Death.Type: chr  &quot;Infant_Deaths_Per_1K&quot; &quot;Expected_Years_To_Live&quot; &quot;Deaths_Per_100K_Live_Births&quot; &quot;Infant_Deaths_Per_1K&quot; ...
-##  $ Deaths    : num  101.3 54.4 521 10.3 79.9 ...</code></pre>
+##  $ Country                : chr  &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Albania&quot; ...
+##  $ Infant_LifeExp_Maternal: chr  &quot;Infant_Deaths_Per_1K&quot; &quot;Expected_Years_To_Live&quot; &quot;Deaths_Per_100K_Live_Births&quot; &quot;Infant_Deaths_Per_1K&quot; ...
+##  $ Data                   : num  101.3 54.4 521 10.3 79.9 ...</code></pre>
 
 
 
