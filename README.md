@@ -1,3 +1,3 @@
 # hw4
 Homework Assignment 4
-[page](https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/index.html)
+[page](https://github.com/Fundamentals-Josh/hw4/blob/main/index.html)
