@@ -118,7 +118,7 @@ head(final_merged_data,20)
 #downloading dplyr library needed for data aggregation
 library(dplyr)
 
-# Group the data by 'Region' and calculate the sum of numerical columns.  I chose sum, because I want to know the data by region.
+# Group the data by 'Region' and calculate the sum of numerical columns.  I chose sum, because I want to know the data totals by region.
 aggregated_data_by_region <- final_merged_data %>%
   group_by(Region) %>%
   summarise(
@@ -179,7 +179,7 @@ Merged_Data_Long <- subset(Merged_Data_Long, select = -c(Region))
 
 ```
 ```{r}
-head(Merged_Data_Long,20) #Show head for further verfication - first 20 rows
+head(Merged_Data_Long,20) #Show head for further verification - first 20 rows
 ```
 
 

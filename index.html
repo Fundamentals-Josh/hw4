@@ -362,7 +362,7 @@ install.packages(&#39;rio&#39;)</code></pre>
 <pre><code>## package &#39;rio&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\jjburton\AppData\Local\Temp\RtmpG6Nh0i\downloaded_packages</code></pre>
+##  C:\Users\jjburton\AppData\Local\Temp\RtmpC6OeJt\downloaded_packages</code></pre>
 <pre class="r"><code>#read the files from HW3 for exercise
 Infant_Mortality=read.csv(&quot;https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Infant_Mortality_Formatted2.csv&quot;)
 Life_Expectantcy=read.csv(&quot;https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Life_Expectantcy_Formatted2.csv&quot;)
@@ -548,7 +548,7 @@ library(dplyr)</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code># Group the data by &#39;Region&#39; and calculate the sum of numerical columns.  I chose sum, because I want to know the data by region.
+<pre class="r"><code># Group the data by &#39;Region&#39; and calculate the sum of numerical columns.  I chose sum, because I want to know the data totals by region.
 aggregated_data_by_region &lt;- final_merged_data %&gt;%
   group_by(Region) %&gt;%
   summarise(
@@ -646,7 +646,7 @@ Merged_Data_Long=tidyr::pivot_longer(data=final_merged_data,
 
 #remove the region column
 Merged_Data_Long &lt;- subset(Merged_Data_Long, select = -c(Region))</code></pre>
-<pre class="r"><code>head(Merged_Data_Long,20) #Show head for further verfication - first 20 rows</code></pre>
+<pre class="r"><code>head(Merged_Data_Long,20) #Show head for further verification - first 20 rows</code></pre>
 <pre><code>## # A tibble: 20 × 3
 ##    Country             Infant_LifeExp_Maternal      Data
 ##    &lt;chr&gt;               &lt;chr&gt;                       &lt;dbl&gt;
