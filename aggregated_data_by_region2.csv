@@ -1,11 +1,11 @@
-"Region","Total_Infant_Deaths_Per_1K","Average_Expected_Years_To_Live","Total_Deaths_Per_100K_Live_Births"
-"Africa",2187.1,67,15775
-"Australia and Oceania",212.1,75,1326
-"Central America and the Caribbean",276.9,76,1454
-"Central Asia",159,73,163
-"East and Southeast Asia",284.5,75,1320
-"Europe",181.8,80,294
-"Middle East",217.9,77,367
-"North America",21.5,79,71
-"South America",178.8,75,880
-"South Asia",291.5,71,1110
+"Region","Average_Infant_Deaths_Per_1K","Average_Expected_Years_To_Live","Total_Deaths_Per_100K_Live_Births"
+"Africa",40,67,292
+"Australia and Oceania",15,75,94
+"Central America and the Caribbean",13,76,69
+"Central Asia",17,73,18
+"East and Southeast Asia",16,75,77
+"Europe",4,80,7
+"Middle East",13,77,22
+"North America",7,79,23
+"South America",14,75,73
+"South Asia",36,71,138
