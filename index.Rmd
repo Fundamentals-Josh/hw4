@@ -118,12 +118,12 @@ head(final_merged_data,20)
 #downloading dplyr library needed for data aggregation
 library(dplyr)
 
-# Group the data by 'Region' and calculate the sum of numerical columns.  I chose sum, because I want to know the data totals by region.
+# Group the data by 'Region' and calculate the sum of numerical columns.  I chose sum, because I want to know the data totals by region for deaths and average for life expectancy.  
 aggregated_data_by_region <- final_merged_data %>%
   group_by(Region) %>%
   summarise(
     Total_Infant_Deaths_Per_1K = sum(Infant_Deaths_Per_1K, na.rm = TRUE),
-    Total_Expected_Years_To_Live = sum(Expected_Years_To_Live, na.rm = TRUE),
+    Average_Expected_Years_To_Live = mean(Expected_Years_To_Live, na.rm = TRUE),
     Total_Deaths_Per_100K_Live_Births = sum(Deaths_Per_100K_Live_Births, na.rm = TRUE)
   )
 
