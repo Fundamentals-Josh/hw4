@@ -129,6 +129,13 @@ aggregated_data_by_region <- final_merged_data %>%
 
 ```
 
+```{r}
+aggregated_data_by_region$Average_Expected_Years_To_Live <- as.integer(aggregated_data_by_region$Average_Expected_Years_To_Live) #this code is to convert the string associated with average expected years to live to an integer. Allowing a double makes the results hard to read.
+
+
+str(aggregated_data_by_region)
+```
+
 
 ```{r}
 head(aggregated_data_by_region,20) #showing the head to verify - first 20 rows

@@ -362,7 +362,7 @@ install.packages(&#39;rio&#39;)</code></pre>
 <pre><code>## package &#39;rio&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\jjburton\AppData\Local\Temp\Rtmp0Gal3d\downloaded_packages</code></pre>
+##  C:\Users\jjburton\AppData\Local\Temp\RtmpeOx6ZD\downloaded_packages</code></pre>
 <pre class="r"><code>#read the files from HW3 for exercise
 Infant_Mortality=read.csv(&quot;https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Infant_Mortality_Formatted2.csv&quot;)
 Life_Expectantcy=read.csv(&quot;https://raw.githubusercontent.com/Fundamentals-Josh/hw4/refs/heads/main/HW%203%20files%20to%20be%20used%20for%20hw4/Life_Expectantcy_Formatted2.csv&quot;)
@@ -556,20 +556,29 @@ aggregated_data_by_region &lt;- final_merged_data %&gt;%
     Average_Expected_Years_To_Live = mean(Expected_Years_To_Live, na.rm = TRUE),
     Total_Deaths_Per_100K_Live_Births = sum(Deaths_Per_100K_Live_Births, na.rm = TRUE)
   )</code></pre>
+<pre class="r"><code>aggregated_data_by_region$Average_Expected_Years_To_Live &lt;- as.integer(aggregated_data_by_region$Average_Expected_Years_To_Live) #this code is to convert the string associated with average expected years to live to an integer. Allowing a double makes the results hard to read.
+
+
+str(aggregated_data_by_region)</code></pre>
+<pre><code>## tibble [10 × 4] (S3: tbl_df/tbl/data.frame)
+##  $ Region                           : chr [1:10] &quot;Africa&quot; &quot;Australia and Oceania&quot; &quot;Central America and the Caribbean&quot; &quot;Central Asia&quot; ...
+##  $ Total_Infant_Deaths_Per_1K       : num [1:10] 2187 212 277 159 284 ...
+##  $ Average_Expected_Years_To_Live   : int [1:10] 67 75 76 73 75 80 77 79 75 71
+##  $ Total_Deaths_Per_100K_Live_Births: int [1:10] 15775 1326 1454 163 1320 294 367 71 880 1110</code></pre>
 <pre class="r"><code>head(aggregated_data_by_region,20) #showing the head to verify - first 20 rows</code></pre>
 <pre><code>## # A tibble: 10 × 4
 ##    Region   Total_Infant_Deaths_…¹ Average_Expected_Yea…² Total_Deaths_Per_100…³
-##    &lt;chr&gt;                     &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;int&gt;
-##  1 Africa                   2187.                    67.1                  15775
-##  2 Austral…                  212.                    75.5                   1326
-##  3 Central…                  277.                    76.5                   1454
-##  4 Central…                  159                     73.8                    163
-##  5 East an…                  284.                    75.6                   1320
-##  6 Europe                    182.                    80.1                    294
-##  7 Middle …                  218.                    77.2                    367
-##  8 North A…                   21.5                   79.9                     71
-##  9 South A…                  179.                    75.3                    880
-## 10 South A…                  292.                    71.1                   1110
+##    &lt;chr&gt;                     &lt;dbl&gt;                  &lt;int&gt;                  &lt;int&gt;
+##  1 Africa                   2187.                      67                  15775
+##  2 Austral…                  212.                      75                   1326
+##  3 Central…                  277.                      76                   1454
+##  4 Central…                  159                       73                    163
+##  5 East an…                  284.                      75                   1320
+##  6 Europe                    182.                      80                    294
+##  7 Middle …                  218.                      77                    367
+##  8 North A…                   21.5                     79                     71
+##  9 South A…                  179.                      75                    880
+## 10 South A…                  292.                      71                   1110
 ## # ℹ abbreviated names: ¹​Total_Infant_Deaths_Per_1K,
 ## #   ²​Average_Expected_Years_To_Live, ³​Total_Deaths_Per_100K_Live_Births</code></pre>
 <pre class="r"><code>#save as RDS file
@@ -580,7 +589,7 @@ str(aggregated_data_by_region)</code></pre>
 <pre><code>## tibble [10 × 4] (S3: tbl_df/tbl/data.frame)
 ##  $ Region                           : chr [1:10] &quot;Africa&quot; &quot;Australia and Oceania&quot; &quot;Central America and the Caribbean&quot; &quot;Central Asia&quot; ...
 ##  $ Total_Infant_Deaths_Per_1K       : num [1:10] 2187 212 277 159 284 ...
-##  $ Average_Expected_Years_To_Live   : num [1:10] 67.1 75.5 76.5 73.8 75.6 ...
+##  $ Average_Expected_Years_To_Live   : int [1:10] 67 75 76 73 75 80 77 79 75 71
 ##  $ Total_Deaths_Per_100K_Live_Births: int [1:10] 15775 1326 1454 163 1320 294 367 71 880 1110</code></pre>
 <pre class="r"><code>#save as CSV and verify per homework instructions
 write.csv(aggregated_data_by_region,&quot;aggregated_data_by_region2.csv&quot;, row.names=FALSE)
@@ -589,7 +598,7 @@ str(aggregated_data_by_region)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    10 obs. of  4 variables:
 ##  $ Region                           : chr  &quot;Africa&quot; &quot;Australia and Oceania&quot; &quot;Central America and the Caribbean&quot; &quot;Central Asia&quot; ...
 ##  $ Total_Infant_Deaths_Per_1K       : num  2187 212 277 159 284 ...
-##  $ Average_Expected_Years_To_Live   : num  67.1 75.5 76.5 73.8 75.6 ...
+##  $ Average_Expected_Years_To_Live   : int  67 75 76 73 75 80 77 79 75 71
 ##  $ Total_Deaths_Per_100K_Live_Births: int  15775 1326 1454 163 1320 294 367 71 880 1110</code></pre>
 <pre class="r"><code>#EXERCISE 3</code></pre>
 <pre class="r"><code>#reading the data frame from exercise 1.
